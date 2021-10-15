@@ -1869,18 +1869,18 @@
         var entropyStr = DOM.entropy.val();
         // Work out minimum base for entropy
         var entropy = null;
+        let base = DOM.entropyTypeInputs.filter(":checked").val();
         if (entropyTypeAutoDetect) {
             entropy = Entropy.fromString(entropyStr);
         }
         else {
-            let base = DOM.entropyTypeInputs.filter(":checked").val();
             entropy = Entropy.fromString(entropyStr, base);
         }
         if (entropy.binaryStr.length == 0) {
             return;
         }
         // Show entropy details
-        showEntropyFeedback(entropy);
+        showEntropyFeedback(entropy, base);
         // Use entropy hash if not using raw entropy
         var bits = entropy.binaryStr;
         var mnemonicLength = DOM.entropyMnemonicLength.val();
@@ -1941,7 +1941,7 @@
         DOM.entropyBinary.html("&nbsp;");
     }
 
-    function showEntropyFeedback(entropy) {
+    function showEntropyFeedback(entropy, base) {
         var numberOfBits = entropy.binaryStr.length;
         var timeToCrack = "unknown";
         try {
@@ -1972,7 +1972,7 @@
         // detect and warn of filtering
         var rawNoSpaces = DOM.entropy.val().replace(/\s/g, "");
         var cleanNoSpaces = entropy.cleanStr.replace(/\s/g, "");
-        var isFiltered = rawNoSpaces.length != cleanNoSpaces.length;
+        var isFiltered = rawNoSpaces.length != cleanNoSpaces.length && base !== 'string';
         if (isFiltered) {
             DOM.entropyFilterWarning.removeClass('hidden');
         }

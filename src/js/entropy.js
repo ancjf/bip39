@@ -307,6 +307,11 @@ window.Entropy = new (function() {
                 str: "base 10",
             }
         }
+        if(baseStr === "string"){
+            var hash = sjcl.hash.sha256.hash(str);
+            var hex = sjcl.codec.hex.fromBits(hash);
+            hexMatches = matchers.hex(hex);
+        }
         var ints = hexMatches.map(function(i) { return parseInt(i, 16) });
         return {
             ints: ints,
