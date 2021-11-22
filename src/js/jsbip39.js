@@ -172,7 +172,7 @@ var Mnemonic = function(language) {
     function byteArrayToWordArray(data) {
         var a = [];
         for (var i=0; i<data.length/4; i++) {
-            v = 0;
+            var v = 0;
             v += data[i*4 + 0] << 8 * 3;
             v += data[i*4 + 1] << 8 * 2;
             v += data[i*4 + 2] << 8 * 1;

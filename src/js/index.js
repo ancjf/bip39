@@ -1449,10 +1449,16 @@
                     address = libs.bitcoin.networks.crown.toNewAddress(address);
                 }
 
-              if (networks[DOM.network.val()].name == "EOS - EOSIO") {
+                if (networks[DOM.network.val()].name == "EOS - EOSIO") {
                     address = ""
                     pubkey = EOSbufferToPublic(keyPair.getPublicKeyBuffer());
                     privkey = EOSbufferToPrivate(keyPair.d.toBuffer(32));
+                }
+
+                if (networks[DOM.network.val()].name == "FIL - FILECOIN") {
+                    address = FILbufferToAddress(keyPair.getPublicKeyBuffer());
+                    pubkey = FILbufferToPublic(keyPair.getPublicKeyBuffer());
+                    privkey = FILbufferToPrivate(keyPair.d.toBuffer(32));
                 }
 
                 if (networks[DOM.network.val()].name == "FIO - Foundation for Interwallet Operability") {
@@ -2800,6 +2806,13 @@
             onSelect: function() {
                 network = libs.bitcoin.networks.bitcoin;
                 setHdCoin(40);
+            },
+        },
+        {
+            name: "FIL - FILECOIN",
+            onSelect: function() {
+                network = libs.bitcoin.networks.bitcoin;
+                setHdCoin(461);
             },
         },
         {

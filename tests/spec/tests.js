@@ -1278,6 +1278,15 @@ it('Allows selection of FIO', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of FIL', function(done) {
+    var params = {
+        selectText: "FIL - FILECOIN",
+        phrase: "valley alien library bread worry brother bundle hammer loyal barely dune brave",
+        firstPubKey: "043da68828907e90cdca2f6b154dd664d16a91c0706e8fb6845a53ee661d388864e32af26c71d6e16b7a9d263c2265dbc2292c4c87b56cc462b7aa1de1908c5607",
+        firstPrivKey: "34099321c218fbc4f4a1fec2fb6ef99789c0149f5b6750e15e03049d21bcce9b",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Firo', function(done) {
     var params = {
         selectText: "FIRO - Firo (Zcoin rebrand)",
