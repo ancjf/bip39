@@ -30,6 +30,7 @@ body {
 }
 .phrase {
     word-break: keep-all;
+    min-height: 100px;
 }
 .generate-container .strength {
     /* override mobile width from bootstrap */
